@@ -9,17 +9,21 @@
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="task" name="task" placeholder="Insert Your task"></ion-input>
+  </ion-item>
+  <button ion-button color="secondary" (click)="add()">Add</button>
 
-  <h3>Welcome to your first Ionic app!</h3>
-
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
-
+  <ion-list>
+      <ion-item-sliding *ngFor="let t of tasks">
+          <ion-item>
+              {{t}}
+          </ion-item>
+          <ion-item-options side="right">
+              <button ion-button color="danger" (click)="delete(t)">
+                  <ion-icon name="trash"></ion-icon> Delete
+              </button>
+          </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
 </ion-content>
